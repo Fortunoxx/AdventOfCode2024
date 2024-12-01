@@ -13,10 +13,15 @@ Get started at [https://adventofcode.com/2024](https://adventofcode.com/2024)
 
 ## run the python solution
 
+### create venv
+
+`python -m venv ./venv`
+
 ### activate venv
 
 `.\venv\Scripts\activate`
 
 ### install packages
 
-`python -m pip install requests`
+`pip install requests`
+`pip install pytest`
