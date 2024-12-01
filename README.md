@@ -21,7 +21,7 @@ Get started at [https://adventofcode.com/2024](https://adventofcode.com/2024)
 
 `.\venv\Scripts\activate`
 
-### install packages
+### upgrade pip and install packages
 
-`pip install requests`
-`pip install pytest`
+`python -m pip install --upgrade pip`
+`pip install requests pytest`
