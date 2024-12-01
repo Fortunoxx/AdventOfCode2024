@@ -23,5 +23,7 @@ Get started at [https://adventofcode.com/2024](https://adventofcode.com/2024)
 
 ### upgrade pip and install packages
 
-`python -m pip install --upgrade pip`
-`pip install requests pytest`
+```powershell
+python -m pip install --upgrade pip
+pip install requests pytest
+```
