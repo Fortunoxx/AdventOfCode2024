@@ -26,7 +26,7 @@ import sys
 sys.path.append('src/puzzle')
 import puzzle
 
-test = 1
+test = 0
 
 def getFileInfo(day, key="input", has_extra_file=False):
     suffix = ""
