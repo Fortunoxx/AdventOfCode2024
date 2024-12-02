@@ -1,6 +1,6 @@
 import pytest
 
-from src.day01 import solve_part1, solve_part2
+from src.day02 import solve_part1, solve_part2
 
 day = "02"
 

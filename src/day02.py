@@ -1,38 +1,48 @@
 def get_values(fileInfo):
     file = open(fileInfo["file"]).readlines()
-    items = [int(i) for i in [line.split() for line in file]]
-    return items
+    return [[int(item) for item in line.split()] for line in file]
 
 
-def calc(items, max_diff=3):
+def calc(items, max_diff=3, min_diff=1):
     counter = 0
 
     for record in items:
         previous = None
         direction = None
+        
         for i in record:
+            fault = False
+    
             if previous is None:
                 previous = i
                 continue
             else:
                 if previous == i:
-                    continue
+                    fault = True
+                    break
                 if previous < i:
                     if direction is None:
                         direction = "up"
                     elif direction is not "up":
-                        continue
-                    if(i - previous <= max_diff):
-                        counter += 1
+                        fault = True
+                        break
+                    if(i - previous > max_diff or i - previous < min_diff):
+                        fault = True
+                        break
                 else:
                     if direction is None:
                         direction = "down"
                     elif direction is not "down":
-                        continue
-                    if(previous - i <= max_diff):
-                        counter += 1
+                        fault = True
+                        break
+                    if(previous - i > max_diff or previous - i < min_diff):
+                        fault = True
+                        break
 
                 previous = i
+    
+        if not fault:
+            counter += 1
 
     return counter
 

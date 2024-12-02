@@ -20,7 +20,7 @@
 # import day05
 # import day04
 # import day03
-# import day02
+import day02
 import day01
 import sys
 sys.path.append('src/puzzle')
@@ -64,7 +64,7 @@ print(f"{G}")
 
 print(f"{W}Day {O}01{W}: Part {O}1: {G}{day01.solve_part1(getFileInfo('01'))}")
 print(f"{W}Day {O}01{W}: Part {O}2: {G}{day01.solve_part2(getFileInfo('01'))}")
-# print(f"{W}Day {O}02{W}: Part {O}1: {G}{day02.solve_part1(getFileInfo('02'))}")
+print(f"{W}Day {O}02{W}: Part {O}1: {G}{day02.solve_part1(getFileInfo('02'))}")
 # print(f"{W}Day {O}02{W}: Part {O}2: {G}{day02.solve_part2(getFileInfo('02'))}")
 # print(f"{W}Day {O}03{W}: Part {O}1: {G}{day03.solve_part1(getFileInfo('03'))}")
 # print(f"{W}Day {O}03{W}: Part {O}2: {G}{day03.solve_part2(getFileInfo('03'))}")
