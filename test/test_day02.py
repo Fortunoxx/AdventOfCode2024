@@ -13,3 +13,8 @@ def test_part1(day, expected_value=2):
 def test_part2(day, expected_value=4):
     testdata = {"key": "sample", "file": f"test/data/day{day}.sample.dat"}
     assert solve_part2(testdata) == expected_value
+
+@pytest.mark.parametrize("day", [day])
+def test_part2_coverage(day, expected_value=3):
+    testdata = {"key": "sample", "file": f"test/data/day{day}.sample-01.dat"}
+    assert solve_part2(testdata) == expected_value

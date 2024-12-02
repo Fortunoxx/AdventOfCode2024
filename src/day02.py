@@ -27,10 +27,6 @@ def check_record(record):
                 direction = "up"
             elif previous > i and direction is None:
                 direction = "down"
-            if previous == i:
-                fault = True
-                idx = id
-                break
             if not check(previous, i, direction):
                 fault = True
                 idx = id
