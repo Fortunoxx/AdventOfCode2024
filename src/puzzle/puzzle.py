@@ -3,21 +3,23 @@ import os
 
 year = 2024
 cookiePath = "src/puzzle/cookie.txt"
-text = "Please don't repeatedly request this endpoint before it unlocks! The calendar countdown is synchronized with the server time; the link will be enabled on the calendar the instant this puzzle becomes available.\n"
+text = "Please don't repeatedly request this endpoint before it unlocks!"
 
-def fetch_for_day(day):
-        filename = f"src/data/day{day}.input.dat"
-        needs_reload = False
+def fetch_for_day(day, locked = False):
+    filename = f"src/data/day{day}.input.dat"
+    needs_reload = False
 
-        if os.path.exists(filename):
-            with open(filename, "r") as file:
-                if file.readline() == text:
-                    needs_reload = True
+    if os.path.exists(filename) and not locked:
+        with open(filename, "r") as file:
+            if file.readline().startswith(text):
+                needs_reload = True
 
-        if not os.path.exists(filename) or needs_reload:
-            save_to_file(get_input(year, day), filename)
-            return (filename, False)
-        return (filename, True)
+    if (not os.path.exists(filename) or needs_reload) and not locked:
+        txt = get_input(year, day)
+        save_to_file(txt, filename)
+        return (filename, False, needs_reload)
+
+    return (filename, True, locked)
 
 
 def get_input(year, day):
