@@ -3,29 +3,34 @@ import os
 
 year = 2024
 cookiePath = "src/puzzle/cookie.txt"
+text = "Please don't repeatedly request this endpoint before it unlocks! The calendar countdown is synchronized with the server time; the link will be enabled on the calendar the instant this puzzle becomes available.\n"
+
+def fetch_for_day(day):
+        filename = f"src/data/day{day}.input.dat"
+        needs_reload = False
+
+        if os.path.exists(filename):
+            with open(filename, "r") as file:
+                if file.readline() == text:
+                    needs_reload = True
+
+        if not os.path.exists(filename) or needs_reload:
+            save_to_file(get_input(year, day), filename)
+            return (filename, False)
+        return (filename, True)
 
 
-def FetchForDay(day):
+def get_input(year, day):
     with open(cookiePath) as cookieFile:
-        for cookie in cookieFile:
-            cookies = dict(session=cookie)
-            filename = f"src/data/day{day}.input.dat"
-            if not os.path.exists(filename):
-                result = requests.get(
-                    f"https://adventofcode.com/{year}/day/{int(day)}/input",
-                    cookies=cookies,
-                )
-                with open(filename, "x") as inputFile:
-                    inputFile.write(result.text)
-                return (filename, False)
-            return (filename, True)
+        cookies = dict(session=cookieFile.readline())
+        result = requests.get(
+            f"https://adventofcode.com/{year}/day/{int(day)}/input",
+            cookies=cookies,
+        )
+    return result.text
 
 
-def FetchTextForDay(day):
-    with open(cookiePath) as cookieFile:
-        for cookie in cookieFile:
-            cookies = dict(session=cookie)
-            result = requests.get(
-                f"https://adventofcode.com/{year}/day/{int(day)}/input", cookies=cookies
-            )
-            return result.text
+def save_to_file(text, filename):
+    with open(filename, "w") as inputFile:
+        inputFile.write(text)
+    return filename
