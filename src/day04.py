@@ -50,4 +50,5 @@ def solve_part1(fileInfo):
 
 
 def solve_part2(fileInfo):
-    return calc_part_1(get_values(fileInfo))
+    items = get_values(fileInfo)
+    return 0
