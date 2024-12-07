@@ -45,12 +45,6 @@ def find_rule_without_parent(rules, distinct_values=[], exceptions=[]):
     return dvc[0]
 
 
-def order_pages(ordered_rules, page_list, result=[]):
-    for page in page_list:
-        result.append([orc for orc in ordered_rules if orc in page])
-    return result
-
-
 def solve_part1(fileInfo):
     rules, page_list = get_values(fileInfo)
     correct = get_correct_pages(rules, page_list)
