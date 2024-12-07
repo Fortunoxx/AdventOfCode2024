@@ -23,18 +23,6 @@ def get_correct_pages(rules, page_list, find_correct=True):
     return correct
 
 
-def insert_value_into_correct_position(value, transformed, ordered_rules=[]):
-    for o in ordered_rules if value not in ordered_rules else []:
-        if (value, o) in transformed:
-            ordered_rules.insert(ordered_rules.index(o), value)
-            break
-        elif (o, value) in transformed:
-            ordered_rules.insert(ordered_rules.index(o) + 1, value)
-            break
-
-    return ordered_rules
-
-
 def order_rules(rules, incorrect):
     val = []
     for pages in incorrect:
