@@ -1,8 +1,3 @@
-import curses
-
-# from curses import wrapper
-
-
 def get_values(fileInfo, start_char="^"):
     with open(fileInfo["file"], "r") as file:
         content = {
@@ -59,40 +54,9 @@ def move(obstacles, start, width, height):
 
 def solve_part1(fileInfo):
     (obstacles, start, width, height) = get_values(fileInfo)
-    # curses.wrapper(main, width, height, obstacles, start)
     visited = move(obstacles, start, width, height)
     return len(visited)
 
 
 def solve_part2(fileInfo):
     return 0
-
-
-# def main(stdscr, width, height, obstacles, start):
-#     # Clear screen
-#     stdscr.clear()
-
-#     # Ensure window size is within terminal dimensions
-#     max_height, max_width = curses.LINES, curses.COLS
-#     width = min(width, max_width)
-#     height = min(height, max_height)
-
-#     # Set up the window size
-#     win = curses.newwin(height, width, 0, 0)
-
-#     # Print initial text
-#     for y in range(height):
-#         for x in range(width):
-#             win.addch(y, x, '.')
-
-#     # Refresh the window to show the initial text
-#     win.refresh()
-
-#     # # Example of updating characters
-#     # for obstacle in obstacles:
-#     #     win.addch(obstacle[1], obstacle[0], '#')
-#     # win.addch(start[1], start[0], '^')
-#     win.refresh()
-
-#     # Wait for user input to exit
-#     win.getch()
