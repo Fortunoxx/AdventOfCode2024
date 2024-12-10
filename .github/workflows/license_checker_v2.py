@@ -33,7 +33,7 @@ def parse_html(html_page):
     lines = html_page.split('\n')
 
     for i, l in enumerate(lines):
-        if ("<a href=" in l) and ("License:" in l):
+        if ("<a href=" in l) and ("License" in l):
             return lines[i + 1].split('::')[1].strip('\n')
 
     for i, l in enumerate(lines):
